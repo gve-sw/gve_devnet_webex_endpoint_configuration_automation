@@ -1,0 +1,26 @@
+{% extends "masterPage.html" %}
+
+{% block content %}
+<script>
+  setTimeout(function() {window.location.reload()}, 60 * 60 * 1000) 
+  // this currently reloads the page every hour
+  // to reload the page (configure the devices) every 5 hours, change the multiplier to 5 * 60 * 60 * 1000
+  // to reload the page (configure the devices) every 30 minutes, change the multiplier to 30 * 60 * 1000
+</script>
+<h3>Devices Configured</h3>
+<ul>
+  {% for device in devices %}
+  <li style="list-style:none;">{{ device.name }}</li>
+  <ul>
+    {% for item in device.config %}
+    <li style="list-style:none;">{{ item }}</li>
+    {% endfor %}
+  </ul>
+  <br>
+  {% endfor %}
+</ul>
+
+<br>
+
+<p>Updated at {{ update_time }}</p>
+{% endblock %}
